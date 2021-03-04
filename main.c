@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 #include "pong.h"
 
-int main(void)  {
+int main(int argc, char *argv[])  {
 
     // attempt to initialize graphics system
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -11,10 +11,14 @@ int main(void)  {
         return 1;
     }
 
+
     printf("initialization successful!\n");
+
+
 
     // clean up resources before exiting
     SDL_Quit();
+    return 0;
 }
 
 
