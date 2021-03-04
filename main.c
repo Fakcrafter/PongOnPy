@@ -1,6 +1,11 @@
+// Pong game written in C
+// By Fakecrafter
+
+
 #include <stdio.h>
-#include <SDL2/SDL.h>
-#include "pong.h"
+#include <stdlib.h>
+#include <SDL.h>        // import SDL2 Library
+//#include "pong.h"       // include headerfile
 
 int main(int argc, char *argv[])  {
 

@@ -2,11 +2,28 @@
 #define SPIELER_HOEHE 30
 #define BALL_DURCHMESSER 20
 
-void player_bewegen(player, x, richtung)
+typedef struct
+{
+    int durchmesser;
+    int x;
+    int y;
+} ball;
+
+typedef struct
+{
+    int breite;
+    int hoehe;
+    int x;
+    int y;
+} spieler;
+
+
+
+void player_bewegen(player, &x, richtung)
 {
     if (x =< /*randlinks*/ && richtung == links)
     {
-        *x = /*randlinks*/;
+        *x = 0;
     }
     else
     {
@@ -15,7 +32,7 @@ void player_bewegen(player, x, richtung)
 
     if (x => /*randrechts*/ && richtung == rechts)
     {
-        *x = /*randrechts*/;
+        *x = 1080;
     }
     else
     {
