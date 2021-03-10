@@ -17,25 +17,34 @@ typedef struct
     int y;
 } spieler;
 
+spieler p1;
+p1.x = width/2;
+p1.y = 880;
+p1.breite = 100;
+p1.hoehe = 40;
 
-
-void player_bewegen(player, &x, richtung)
+ball ball1;
+ball1.durchmesser = 30;
+ball1.x = 0;
+ball1.y = 0;
+void player_bewegen(spieler *p1, richtung)
 {
-    if (x =< /*randlinks*/ && richtung == links)
+    if (p1.x =< /*randlinks*/ && richtung == links)
     {
-        *x = 0;
+        p1.x = 0;
     }
     else
     {
-        *x -= 2;
+        p1.x -= 2;
     }
 
-    if (x => /*randrechts*/ && richtung == rechts)
+    if (p1.x => /*randrechts*/ && richtung == rechts)
     {
-        *x = 1080;
+        p1.x = 1080;
     }
     else
     {
-        *x += 2;
-
+        p1.x += 2;
+    }
+    return p1.x;
 }

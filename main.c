@@ -9,6 +9,28 @@
 
 int main(int argc, char *argv[])  {
 
+    if (argc == 1)
+    {
+        print("Too few arguments!\n");
+        return 0;
+    }
+    else
+    {
+        if (argv[0] == "2")
+        {
+            int mode = 2;
+        }
+        if else (argv[0] == "1")
+        {
+            int mode = 1;
+        }
+        else
+        {
+            printf("too many arguments\n");
+            return 0;
+        }
+
+
     // attempt to initialize graphics system
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
