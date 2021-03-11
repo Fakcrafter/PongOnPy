@@ -27,9 +27,12 @@ ball ball1;
 ball1.durchmesser = 30;
 ball1.x = 0;
 ball1.y = 0;
-void player_bewegen(spieler *p1, richtung)
+
+
+
+void player_bewegen(spieler *p1,char *richtung)
 {
-    if (p1.x =< /*randlinks*/ && richtung == links)
+    if (p1.x =< 0 && *richtung == "links")
     {
         p1.x = 0;
     }
@@ -38,7 +41,7 @@ void player_bewegen(spieler *p1, richtung)
         p1.x -= 2;
     }
 
-    if (p1.x => /*randrechts*/ && richtung == rechts)
+    if (p1.x => /*randrechts*/ && *richtung == "rechts")
     {
         p1.x = 1080;
     }
