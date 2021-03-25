@@ -1,15 +1,17 @@
 // Pong game written in C
 // By Fakecrafter
 
-
-//#define al_init()    al_install_system(ALLEGRO_VERSION_INT, atexit)
-
-#include "allegro5/allegro.h"
-//#include <allegro5/allegro_image.h>
 #include <stdio.h>
 #include <stdlib.h>
-//#include <ncurses.h>        // import SDL2 Library
+#include <unistd.h>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
 //#include "pong.h"       // include headerfile
+
+
+
+static ALLEGRO_DISPLAY *display;
+
 
 int main(int argc, char *argv[])
 {
@@ -35,7 +37,9 @@ int main(int argc, char *argv[])
     {
         printf("Initialisierung: AllegroMain Fehler\n");
     }
-
+    display = al_create_display(1920, 1080);
+    sleep(5);
+    al_destroy_display(display);
     return 0;
 }
 
