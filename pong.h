@@ -3,35 +3,35 @@
 #define BALL_DURCHMESSER 20
 
 
-typedef struct
+int window_width = 1920;
+int window_height = 1080;
+int player_x = 30;
+int player_y = 1920/2;
+
+
+static ALLEGRO_DISPLAY *display;
+
+
+int player_bewegen(int *y,int richtung)
 {
-    int durchmesser;
-    int x;
-    int y;
-} ball;
-
-
-
-int player_bewegen(struct *spieler,int richtung)
-{
-    if (p1.y <= 0 && richtung == 1)
+    if (player_y <= 0 && richtung == 1)
     {
         //nothing
     }
     else
     {
-        p1.y -= 2;
+        player_y -= 2;
     }
 
-    if (p1.y >= 1080 && richtung == 0)
+    if (player_y >= 1080 && richtung == 0)
     {
         //nothing
     }
     else
     {
-        p1.y += 2;
+        player_y += 2;
     }
-    return p1.y;
+    return player_y;
 }
 
 

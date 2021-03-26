@@ -6,17 +6,10 @@
 #include <unistd.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
-//#include "pong.h"       // include headerfile
+#include "pong.h"       // include headerfile
 
 
 
-
-
-
-static ALLEGRO_DISPLAY *display;
-
-
-//int player_bewegen(struct player *spieler,int richtung);
 
 
 
@@ -38,20 +31,6 @@ int main(int argc, char *argv[])
             int mode = 1;
         }
     }
-
-    struct player
-    {
-        int breite;
-        int hoehe;
-        int x;
-        int y;
-    }p1;
-
-    //player1 definieren
-    p1.breite = 40;
-    p1.hoehe = 100;
-    p1.x = 30;
-    p1.y = 1920/2;
 
     // Init
     if (!al_init() || !al_install_keyboard())
@@ -78,27 +57,7 @@ int main(int argc, char *argv[])
 
 
 
-int player_bewegen(struct *player,int richtung)
-{
-    if (p1.y <= 0 && richtung == 1)
-    {
-        //nothing
-    }
-    else
-    {
-        p1.y -= 2;
-    }
 
-    if (p1.y >= 1080 && richtung == 0)
-    {
-        //nothing
-    }
-    else
-    {
-        p1.y += 2;
-    }
-    return p1.y;
-}
 
 
 
