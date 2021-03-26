@@ -1,5 +1,5 @@
 Pong
 
-The Classical Pong Game. Written in C with Ncurses library.
+The Classical Pong Game. Written in C with Allegro library.
 
 By Fakecrafter
