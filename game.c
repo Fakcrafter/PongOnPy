@@ -40,10 +40,10 @@ int main(int argc, char *argv[])
     printf("Initialisierung erfolgreich\n");
 
 
+    //ToDo: make screen resolution adjustable or fullscreen
+
+
     //Create Display
-    //ToDo: adjust screen resolution to monitor
-
-
     display = al_create_display(1920, 1080);
     sleep(5);
 
