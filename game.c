@@ -47,7 +47,10 @@ int main(int argc, char *argv[])
     display = al_create_display(1920, 1080);
     sleep(5);
 
-
+    while(1)
+    {
+        //get_input
+    }
 
 
     // destroy everything and quit the program
