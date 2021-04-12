@@ -4,8 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <allegro5/allegro.h>
-#include <allegro5/allegro_image.h>
+#include <raylib.h>
 #include "pong.h"       // include headerfile
 
 
@@ -15,6 +14,10 @@
 
 int main(int argc, char *argv[])
 {
+    static int player_x = 30;
+    int player_y = 1920/2;
+    char input;
+
     if (argc == 1)
     {
         printf("Too few arguments!\n");
@@ -33,28 +36,21 @@ int main(int argc, char *argv[])
     }
 
     // Init
-    if (!al_init() || !al_install_keyboard())
-    {
-        printf("Initialisierung: Fehler\n");
-    }
-    printf("Initialisierung erfolgreich\n");
 
 
     //ToDo: make screen resolution adjustable or fullscreen
 
 
+
+
+
     //Create Display
-    display = al_create_display(1920, 1080);
+    InitWindow(GetScreenWidth(), GetScreenHeight(), "Pong");
+
     sleep(5);
 
-    while(1)
-    {
-        //get_input
-    }
-
-
     // destroy everything and quit the program
-    al_destroy_display(display);
+    CloseWindow();
     return 0;
 }
 
