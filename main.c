@@ -39,11 +39,19 @@ int main(int argc, char *argv[])
     //Create Display
     InitWindow(GetScreenWidth(), GetScreenHeight(), "Pong");
 
+
+    //Player 1: paddle
     Vector2 paddlePosition1 = { 30, (float)GetScreenHeight()/2};
     Vector2 paddleSize1 = { 30, 120};
 
+    //Player 2: paddle
     Vector2 paddlePosition2 = { GetScreenWidth()-60, (float)GetScreenHeight()/2};
     Vector2 paddleSize2 = { 30, 120};
+
+
+    //Ball
+    Vector2 ballPosition = { (float)GetScreenWidth()/2, (float)GetScreenHeight()/2};
+    Vector2 ballDiameter = {30, 30};
 
     SetTargetFPS(60);
 
@@ -51,11 +59,12 @@ int main(int argc, char *argv[])
 
     while(!WindowShouldClose())
     {
-        if (IsKeyDown(KEY_D) && paddlePosition1.y > 0)    paddlePosition1.y -= 5.0f;
-        if (IsKeyDown(KEY_F) && paddlePosition1.y + paddleSize1.y < 1720) paddlePosition1.y += 5.0f;
 
-        if (IsKeyDown(KEY_K)) paddlePosition2.y -= 5.0f;
-        if (IsKeyDown(KEY_J)) paddlePosition2.y += 5.0f;
+        if (IsKeyDown(KEY_D) && paddlePosition1.y > 0)          paddlePosition1.y -= 5.0f;
+        if (IsKeyDown(KEY_F) && paddlePosition1.y < 1080 - 120) paddlePosition1.y += 5.0f;
+
+        if (IsKeyDown(KEY_K) && paddlePosition2.y > 0)          paddlePosition2.y -= 5.0f;
+        if (IsKeyDown(KEY_J) && paddlePosition2.y < 1080 - 120) paddlePosition2.y += 5.0f;
         //Drawing
 
         BeginDrawing();
@@ -64,6 +73,7 @@ int main(int argc, char *argv[])
             ClearBackground(BLACK);
             DrawRectangleV(paddlePosition1, paddleSize1, WHITE);
             DrawRectangleV(paddlePosition2, paddleSize2, WHITE);
+            DrawRectangleV(ballPosition, ballDiameter, WHITE);
 
 
         EndDrawing();
