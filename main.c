@@ -41,17 +41,17 @@ int main(int argc, char *argv[])
 
 
     //Player 1: paddle
-    Vector2 paddlePosition1 = { 30, (float)GetScreenHeight()/2};
-    Vector2 paddleSize1 = { 30, 120};
+    Rectangle paddle1 = { 30, (float)GetScreenHeight()/2, 30, 120};
+    int Score1 = 0;
 
     //Player 2: paddle
-    Vector2 paddlePosition2 = { GetScreenWidth()-60, (float)GetScreenHeight()/2};
-    Vector2 paddleSize2 = { 30, 120};
+    Rectangle paddle2 = { GetScreenWidth()-60, (float)GetScreenHeight()/2, 30, 120};
+    int Score2 = 0;
 
 
     //Ball
-    Vector2 ballPosition = { (float)GetScreenWidth()/2, (float)GetScreenHeight()/2};
-    Vector2 ballDiameter = {30, 30};
+    Rectangle ball = { (float)GetScreenWidth()/2, (float)GetScreenHeight()/2, 30, 30};
+    Vector2 ballSpeed = { (float)4.0, (float)4.0};
 
     SetTargetFPS(60);
 
@@ -60,24 +60,67 @@ int main(int argc, char *argv[])
     while(!WindowShouldClose())
     {
 
-        if (IsKeyDown(KEY_D) && paddlePosition1.y > 0)          paddlePosition1.y -= 5.0f;
-        if (IsKeyDown(KEY_F) && paddlePosition1.y < 1080 - 120) paddlePosition1.y += 5.0f;
+        if (IsKeyDown(KEY_D) && paddle1.y > 0)          paddle1.y -= 5.0f;
+        if (IsKeyDown(KEY_F) && paddle1.y < 1080 - 120) paddle1.y += 5.0f;
 
-        if (IsKeyDown(KEY_K) && paddlePosition2.y > 0)          paddlePosition2.y -= 5.0f;
-        if (IsKeyDown(KEY_J) && paddlePosition2.y < 1080 - 120) paddlePosition2.y += 5.0f;
+        if (IsKeyDown(KEY_K) && paddle2.y > 0)          paddle2.y -= 5.0f;
+        if (IsKeyDown(KEY_J) && paddle2.y < 1080 - 120) paddle2.y += 5.0f;
+
+        ball.y += ballSpeed.y;
+        ball.x += ballSpeed.x;
+        if(ball.x <= -40)
+        {
+            Score2++;
+            //reset;
+            ball.x = (float)GetScreenWidth()/2;
+            ball.y = (float)GetScreenHeight()/2;
+            ballSpeed.x = -4.0f;
+            ballSpeed.y =  4.0f;
+            continue;
+        }
+
+        if(ball.x >= (GetScreenWidth() + 40))
+        {
+            Score1++;
+            //reset;
+            ball.x = (float)GetScreenWidth()/2;
+            ball.y = (float)GetScreenHeight()/2;
+            ballSpeed.x = 4.0f;
+            ballSpeed.y = 4.0f;
+            continue;
+        }
+
+        if(CheckCollisionRecs(paddle1, ball))
+        {
+            ballSpeed.x -=  1.0f;
+            ballSpeed.x *= -1.0f;
+        }
+
+        if(CheckCollisionRecs(paddle2, ball))
+        {
+            ballSpeed.x +=  1.0f;
+            ballSpeed.x *= -1.0f;
+        }
+
+
+        if ((ball.y >= (GetScreenHeight() - ball.height)) || (ball.y <= 0)) ballSpeed.y *= -1.0f;
+
+
         //Drawing
 
         BeginDrawing();
 
 
             ClearBackground(BLACK);
-            DrawRectangleV(paddlePosition1, paddleSize1, WHITE);
-            DrawRectangleV(paddlePosition2, paddleSize2, WHITE);
-            DrawRectangleV(ballPosition, ballDiameter, WHITE);
+            DrawRectangleRec(paddle1, WHITE);
+            DrawRectangleRec(paddle2, WHITE);
+            DrawRectangleRec(ball, WHITE);
+            DrawFPS(10, 10);
 
 
         EndDrawing();
     }
+    printf("Player_Left Score: %d\nPlayer_Right Score %d\n", Score1, Score2);
     // destroy everything and quit the program
     CloseWindow();
     return 0;
