@@ -51,9 +51,10 @@ int main(int argc, char *argv[])
 
     //Ball
     Rectangle ball = { (float)GetScreenWidth()/2, (float)GetScreenHeight()/2, 30, 30};
-    Vector2 ballSpeed = { (float)4.0, (float)4.0};
+    Vector2 ballSpeed = { (float)2.0, (float)2.0};
 
-    SetTargetFPS(60);
+    SetTargetFPS(90);
+    HideCursor();
 
 
 
@@ -112,6 +113,9 @@ int main(int argc, char *argv[])
 
 
             ClearBackground(BLACK);
+            DrawFPS(10, 10);
+            DrawText(TextFormat("%i", Score1), GetScreenWidth() / 2 - 100, 100, 50.0, GRAY);
+            DrawText(TextFormat("%i", Score2), GetScreenWidth() / 2 + 100, 100, 50.0, GRAY);
             DrawRectangleRec(paddle1, WHITE);
             DrawRectangleRec(paddle2, WHITE);
             DrawRectangleRec(ball, WHITE);
