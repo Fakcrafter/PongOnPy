@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
     //Create Display
     InitWindow(GetScreenWidth(), GetScreenHeight(), "Pong");
 
+    int PaddleSpeed = 10;
 
     //Player 1: paddle
     Rectangle paddle1 = { 30, (float)GetScreenHeight()/2, 30, 120};
@@ -51,7 +52,7 @@ int main(int argc, char *argv[])
 
     //Ball
     Rectangle ball = { (float)GetScreenWidth()/2, (float)GetScreenHeight()/2, 30, 30};
-    Vector2 ballSpeed = { (float)2.0, (float)2.0};
+    Vector2 ballSpeed = { (float)5.0, (float)5.0};
 
     SetTargetFPS(90);
     HideCursor();
@@ -61,11 +62,11 @@ int main(int argc, char *argv[])
     while(!WindowShouldClose())
     {
 
-        if (IsKeyDown(KEY_D) && paddle1.y > 0)          paddle1.y -= 5.0f;
-        if (IsKeyDown(KEY_F) && paddle1.y < 1080 - 120) paddle1.y += 5.0f;
+        if (IsKeyDown(KEY_D) && paddle1.y > 0)          paddle1.y -= 1.0f * PaddleSpeed;
+        if (IsKeyDown(KEY_F) && paddle1.y < 1080 - 120) paddle1.y += 1.0f * PaddleSpeed;
 
-        if (IsKeyDown(KEY_K) && paddle2.y > 0)          paddle2.y -= 5.0f;
-        if (IsKeyDown(KEY_J) && paddle2.y < 1080 - 120) paddle2.y += 5.0f;
+        if (IsKeyDown(KEY_K) && paddle2.y > 0)          paddle2.y -= 1.0f * PaddleSpeed;
+        if (IsKeyDown(KEY_J) && paddle2.y < 1080 - 120) paddle2.y += 1.0f * PaddleSpeed;
 
         ball.y += ballSpeed.y;
         ball.x += ballSpeed.x;
@@ -93,13 +94,15 @@ int main(int argc, char *argv[])
 
         if(CheckCollisionRecs(paddle1, ball))
         {
-            ballSpeed.x -=  1.0f;
+            ball.x += 10.0f;
+            ballSpeed.x -=  1.5f;
             ballSpeed.x *= -1.0f;
         }
 
         if(CheckCollisionRecs(paddle2, ball))
         {
-            ballSpeed.x +=  1.0f;
+            ball.x -= 10.0f;
+            ballSpeed.x +=  1.5f;
             ballSpeed.x *= -1.0f;
         }
 
